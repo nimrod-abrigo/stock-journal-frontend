@@ -1,0 +1,16 @@
+<table>
+    <tr>
+      <th>Stock</th>
+      <th>Type</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Date</th>
+    </tr>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.stock }}</td>
+      <td>{{ transaction.type }}</td>
+      <td>{{ transaction.quantity }}</td>
+      <td>{{ transaction.price }}</td>
+      <td>{{ transaction.date }}</td>
+    </tr>
+</table>
