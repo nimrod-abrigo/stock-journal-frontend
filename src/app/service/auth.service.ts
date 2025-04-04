@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
   apiUrl = "http://localhost:5000/api/auth";
   token = "";
+  user = {};
 
   login(credentials: { email: string, password: string }) {
     // Call backend API for login
@@ -22,14 +23,9 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
 
-  getCredential(){
-    let loginCredential = JSON.parse(localStorage.getItem('token') as string);
-    let {token, user} = loginCredential;
-    return {token,user};
-  }
-
   logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.router.navigate(['/login']);
   }
   

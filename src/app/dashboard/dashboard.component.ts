@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { DashboardService } from '../service/dashboard.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +12,17 @@ import { DashboardService } from '../service/dashboard.service';
 })
 export class DashboardComponent {
 
-  constructor(private authService: AuthService, private router: Router, private dashboardService: DashboardService){}
+  result:any;
+  userInfo:any;
 
+  constructor(private authService: AuthService, private router: Router, private dashboardService: DashboardService){
+    //this.userInfo = this.authService.user;
+    this.userInfo = JSON.parse(localStorage.getItem('user') as string);
+  }
+  
   ngOnInit(): void {
     this.dashboardService.getPortfolio().subscribe((result)=>{
-      console.log(result);
+      this.result = result;
     });
   }
   

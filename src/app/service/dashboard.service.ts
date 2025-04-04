@@ -12,7 +12,8 @@ export class DashboardService {
 
 
   getPortfolio(){
-    let token = this.auth.getCredential().token;
+    //let token = this.auth.token;
+    let token = localStorage.getItem('token') as string;
     const headers = new HttpHeaders({
       'x-auth-token': token
     });

@@ -1,2 +1,4 @@
-<p>dashboard works!</p>
+<p>Welcome {{userInfo['username']}}</p>
+<p>Member since {{userInfo['createdAt']|date:'fullDate'}}</p>
+<p>{{result|json}}</p>
 <button (click)="logout()">Logout</button>

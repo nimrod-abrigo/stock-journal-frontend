@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Transaction } from '../transaction.model';
-import { TransactionService } from '../transaction.service';
+import { TransactionService } from '../../service/transaction.service';
 
 @Component({
   selector: 'app-transaction-list',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TransactionService } from '../transaction.service';
+import { TransactionService } from '../../service/transaction.service';
 import { Transaction } from '../transaction.model';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 })
 export class AddTransactionComponent {
   transactionForm: FormGroup;
+  transactionTypes = ['BUY', 'SELL', 'DIVIDEND'];
 
   constructor(private fb: FormBuilder, private transactionService: TransactionService) {
     this.transactionForm = this.fb.group({

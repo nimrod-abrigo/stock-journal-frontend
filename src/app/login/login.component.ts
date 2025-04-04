@@ -26,8 +26,11 @@ export class LoginComponent {
     this.errorMessage = "";
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
-        (response) => {
-          localStorage.setItem('token', JSON.stringify(response));
+        (response: any) => {
+          this.authService.token = response.token;
+          this.authService.user = response.user;
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.user));
           this.router.navigate(['/dashboard']);
         },
         (error) => {

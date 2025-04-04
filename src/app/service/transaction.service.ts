@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Transaction } from './transaction.model';
+import { Transaction } from '../transaction/transaction.model';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({

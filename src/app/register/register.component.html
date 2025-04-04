@@ -1,3 +1,26 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label>Username:</label>
+    <input type="text" formControlName="username"><br>
+    <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
+        Username must be at least 6 characters
+    </div>
+
+    <label>Email:</label>
+    <input type="email" formControlName="email"><br>
+    <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+        Invalid email
+    </div>
+  
+    <label>Password:</label>
+    <input type="password" formControlName="password"><br>
+    <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+        Password must be at least 6 characters
+    </div>
+  
+    <div *ngIf="errorMessage!=''">
+        Register Error
+    </div>
+    <button type="submit">Register</button><br>
+</form>
 
 Have account already? <a href="/login">Login</a>
