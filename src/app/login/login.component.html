@@ -1,21 +1,23 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label>Email:</label>
-    <input type="email" formControlName="email">
-    <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
-      Invalid email
-    </div>
-  
-    <label>Password:</label>
-    <input type="password" formControlName="password">
-    <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
-      Password must be at least 6 characters
-    </div>
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <mat-form-field  class="login-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">Invalid email</mat-error>
+    </mat-form-field>
+      
+    <mat-form-field class="login-full-width">
+      <mat-label>Password:</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">Password must be at least 6 characters</mat-error>
+    </mat-form-field>
 
     <div *ngIf="errorMessage!=''">
         Incorrect Details
     </div>
-  
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
-    No account yet? <a href="/register">Register</a>
-</form>
+    
+    <button type="submit" [disabled]="loginForm.invalid" mat-flat-button>Login</button>
+    <br>No account yet? <a mat-button href="/register" target="_blank">Register</a>
+  </form>
+</div>
   

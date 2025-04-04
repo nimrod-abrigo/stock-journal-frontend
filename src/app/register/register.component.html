@@ -1,26 +1,30 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <label>Username:</label>
-    <input type="text" formControlName="username"><br>
-    <div *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
-        Username must be at least 6 characters
-    </div>
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+        <mat-form-field  class="register-full-width">
+            <mat-label>Username:</mat-label>
+            <input matInput type="text" formControlName="username">
+            <mat-error *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched">
+                Username must be at least 6 characters
+            </mat-error>
+        </mat-form-field>
 
-    <label>Email:</label>
-    <input type="email" formControlName="email"><br>
-    <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
-        Invalid email
-    </div>
-  
-    <label>Password:</label>
-    <input type="password" formControlName="password"><br>
-    <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
-        Password must be at least 6 characters
-    </div>
-  
-    <div *ngIf="errorMessage!=''">
-        Register Error
-    </div>
-    <button type="submit">Register</button><br>
-</form>
+        <mat-form-field  class="register-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">Invalid email</mat-error>
+        </mat-form-field>
 
-Have account already? <a href="/login">Login</a>
+        <mat-form-field class="register-full-width">
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+                Password must be at least 6 characters
+            </mat-error>
+        </mat-form-field>
+    
+        <div *ngIf="errorMessage!=''">
+            Register Error
+        </div>
+        <button type="submit">Register</button><br>Have account already? <a href="/login">Login</a>
+    </form>
+</div>

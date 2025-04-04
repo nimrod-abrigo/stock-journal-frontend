@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { DashboardService } from '../service/dashboard.service';
-import { Observable } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-dashboard',
