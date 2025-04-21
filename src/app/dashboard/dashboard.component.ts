@@ -2,7 +2,20 @@ import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { DashboardService } from '../service/dashboard.service';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+
+export interface PortfolioItem {
+  stockSymbol: string;
+  name: string;
+  shares: number;
+  avgPrice: number;
+  currentPrice: number;
+  totalCost:number;
+  marketValue: number;
+  capitalGainAmount: number;
+  capitalGainPercentage: string;
+  totalDiv: number;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -12,8 +25,10 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class DashboardComponent {
 
-  result:any;
   userInfo:any;
+  result: any;
+  dataSource:any;
+  displayedColumns: string[] = ['stockSymbol', 'name', 'shares', 'avgPrice','currentPrice','totalCost','marketValue','capitalGainAmount','capitalGainPercentage','totalDiv'];
 
   constructor(private authService: AuthService, private router: Router, private dashboardService: DashboardService){
     //this.userInfo = this.authService.user;
@@ -23,6 +38,7 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.dashboardService.getPortfolio().subscribe((result)=>{
       this.result = result;
+      this.dataSource = new MatTableDataSource(result as PortfolioItem[]);
     });
   }
   
