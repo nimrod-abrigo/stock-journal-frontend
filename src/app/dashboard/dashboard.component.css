@@ -1,3 +1,20 @@
-table {
-    width: 100%;
+.parent {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.child {
+    margin: 0 auto;
+    justify-content: center;
+    width: fit-content;
+}
+
+.child p{
+    text-align: center;
+}
+
+.child button {
+    margin: 0 auto;
+    display: block;
 }
